@@ -1,20 +1,34 @@
 import React from "react";
 import "./App.css";
+import styled from "styled-components";
 
 // Import komponentów
 import PageManage from "./layouts/PageManage";
 import Navigation from "./components/navigation";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+
+const AppContainer = styled.div`
+  margin: 0 auto;
+  //border: 1px solid red;
+
+
+  @media (min-width: 767px) {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 1rem;
+  }
+`
+
 
 function App() {
   return (
-    <div className="App">
+    <AppContainer>
       <Router>
         <Navigation />
         <hr />
         <PageManage />
       </Router>
-    </div>
+    </AppContainer>
   );
 }
 
