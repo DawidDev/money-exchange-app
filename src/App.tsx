@@ -10,10 +10,11 @@ import { BrowserRouter as Router } from "react-router-dom";
 const AppContainer = styled.div`
   margin: 0 auto;
   //border: 1px solid red;
+  font-family: "Poppins", sans-serif;
 
 
   @media (min-width: 767px) {
-    max-width: 1200px;
+    max-width: 1400px;
     width: 100%;
     padding: 0 1rem;
   }
