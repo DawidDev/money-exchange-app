@@ -9,11 +9,13 @@ const MainContainer = styled.div`
   right: 0;
   top: 28rem;
   transform: translateY(-50%);
+  z-index: 1;
 
   .calculator {
     width: 100%;
     height: 100%;
     display: flex;
+    box-shadow: 0px 11px 24px -11px rgba(66, 68, 90, 1);
 
     .box-1,
     .box-2 {
@@ -21,7 +23,8 @@ const MainContainer = styled.div`
       height: 100%;
     }
 
-    .box-1, .box-2 {
+    .box-1,
+    .box-2 {
       background-color: #f4f2ee;
       position: relative;
       padding: 1rem;
@@ -68,6 +71,10 @@ const MainContainer = styled.div`
         color: #fff;
         border: none;
       }
+
+      p {
+        color: #fff;
+      }
     }
   }
 
@@ -81,10 +88,104 @@ const MainContainer = styled.div`
       color: #29b35e;
     }
   }
+  @media (max-width: 768px) {
+    position: relative;
+    width: 100% !important;
+    order: 2;
+    transform: translateY(0%);
+    top: 0;
+    height: auto;
+    
+
+    .calculator {
+      flex-direction: column;
+
+      .box-1,
+      .box-2 {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+        .line-1 {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 40%;
+
+          .select-input {
+            width: 100%;
+            font-size: 1.5rem;
+            
+          }
+        }
+
+        input {
+            width: 55%;
+            height: 100%;
+            bottom: 0;
+            position: relative;
+            left: 0%;
+            transform: translateX(0%);
+            text-align: right;
+            
+        }
+
+        p {
+            display: none
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1024px){
+    width: 45%;
+    .calculator {
+      flex-direction: column;
+
+      .box-1,
+      .box-2 {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+        .line-1 {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 40%;
+
+          .select-input {
+            width: 100%;
+            font-size: 1.5rem;
+            
+          }
+        }
+
+        input {
+            width: 55%;
+            height: 100%;
+            bottom: 0;
+            position: relative;
+            left: 0%;
+            transform: translateX(0%);
+            text-align: right;
+            
+        }
+
+        p {
+            display: none
+        }
+      }
+    }
+  }
+
 `;
 
 const CalculatorMoney = () => {
-
   // Aktualnie wybrana opcja (nazwa waluty)
   const [optionChoosed, setOptionChoosed] = useState("EUR");
   const handleOption = (e: any) => {
@@ -97,47 +198,52 @@ const CalculatorMoney = () => {
   const [valueInput, setValueInput] = useState(0);
   const handleValueInput = (e: any) => {
     setValueInput(e.target.value);
-    handleCalculateValue(optionChoosed, e.target.value, 0.42)
-  }
+    handleCalculateValue(optionChoosed, e.target.value, 0.42);
+  };
 
-  // Aktualnie wybrana nazwa waluty do kalulacji 
+  // Aktualnie wybrana nazwa waluty do kalulacji
   const [resultOptionChoosed, setResultOptionChoosed] = useState("CHF");
-  const handleResultOption = (e:any) => {
-    setResultOptionChoosed(e.target.value)
-  }
+  const handleResultOption = (e: any) => {
+    setResultOptionChoosed(e.target.value);
+  };
 
   // Aktualnie przekalkulowana wartość po konwersji waluty
   const [afterCalculateValue, setCalculateValue] = useState(0);
-  const handleCalculateValue = (name:string, value:number, multiplier:number) => {
-    const newValue:number = (value * multiplier);
-    setCalculateValue(newValue)
-  }
+  const handleCalculateValue = (
+    name: string,
+    value: number,
+    multiplier: number
+  ) => {
+    const newValue: number = value * multiplier;
+    setCalculateValue(newValue);
+  };
 
   // Tablica zawierająca dostępne waluty do wyboru
   const optionsTab = ["EUR", "CHF", "FRA"];
 
   // Funkcja zwracająca opcje dla elementu Select
-  const SelectOptions = (option:string) => optionsTab.map((item) => (
-    <MenuItem
-      key={item}
-      value={item}
-      className={"select-option"}
-      sx={{
-        width: "100%",
-        border: 'none',
-        color: option === 'input' ? '#4e5255' : '#29B35E',
-        '&:hover': {
-            backgroundColor: '#c1e9d0',
+  const SelectOptions = (option: string) =>
+    optionsTab.map((item) => (
+      <MenuItem
+        key={item}
+        value={item}
+        className={"select-option"}
+        sx={{
+          width: "100%",
+          border: "none",
+          color: option === "input" ? "#4e5255" : "#29B35E",
+          "&:hover": {
+            backgroundColor: "#c1e9d0",
           },
-          '&.Mui-selected': {
-            color: '#fff',  
-            backgroundColor: '#29B35E',
+          "&.Mui-selected": {
+            color: "#fff",
+            backgroundColor: "#29B35E",
           },
-      }}
-    >
-      {item}
-    </MenuItem>
-  ));
+        }}
+      >
+        {item}
+      </MenuItem>
+    ));
 
   return (
     <MainContainer>
@@ -155,7 +261,7 @@ const CalculatorMoney = () => {
               onChange={handleOption}
               className={"select-input"}
             >
-              {SelectOptions('input')}
+              {SelectOptions("input")}
             </Select>
           </div>
           <input
@@ -166,27 +272,27 @@ const CalculatorMoney = () => {
           />
         </div>
         <div className="box-2">
-        <div className="line-1">
+          <div className="line-1">
             <p>
-              Kwota <strong>do</strong> kalkulacji
+              Kwota <strong>po</strong> kalkulacji
             </p>
             <Select
               value={resultOptionChoosed}
               onChange={handleResultOption}
               className={"select-input"}
               sx={{
-                color: '#fff'
+                color: "#fff",
               }}
             >
-              {SelectOptions('result')}
+              {SelectOptions("result")}
             </Select>
-            <input
-            type={"number"}
-            className={"input-value"}
-            value={afterCalculateValue}
-
-          />
+            
           </div>
+          <input
+              type={"number"}
+              className={"input-value"}
+              value={afterCalculateValue}
+            />
         </div>
       </div>
     </MainContainer>

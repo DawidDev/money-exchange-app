@@ -11,13 +11,15 @@ const AppContainer = styled.div`
   margin: 0 auto;
   //border: 1px solid red;
   font-family: "Poppins", sans-serif;
+  z-index: 0;
 
 
-  @media (min-width: 767px) {
+  @media (min-width: 768px) {
     max-width: 1400px;
     width: 100%;
     padding: 0 1rem;
   }
+
 `
 
 
@@ -26,7 +28,6 @@ function App() {
     <AppContainer>
       <Router>
         <Navigation />
-        <hr />
         <PageManage />
       </Router>
     </AppContainer>

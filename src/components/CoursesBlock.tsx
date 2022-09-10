@@ -3,8 +3,15 @@ import styled from "styled-components";
 
 const MainContainer = styled.div`
   background-color: silver;
-  width: 28rem;
+  max-width: 28rem;
+  width: 100%;
   height: 22rem;
+  position: relative;
+
+  @media (max-width: 767px) {
+    order: 3;
+    margin: 2rem auto;
+  }
 `;
 
 const CoursesBlock = () => {

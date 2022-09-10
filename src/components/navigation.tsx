@@ -9,7 +9,7 @@ import RightNav from "./RightNav";
 import logoMain from '../images/logo-main.png'
 
 const MainContainer = styled.div`
-  z-index: 0;
+  z-index: 1;
   position: relative;
   display: flex;
   justify-content: space-between;
