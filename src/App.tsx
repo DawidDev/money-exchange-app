@@ -39,8 +39,8 @@ function App() {
         .then((res) => setExchangeValues(res[0].rates));
     }
   });
-  console.log("KOMPONENT GŁÓWNY");
-  console.log(exchangeValues);
+  //console.log("KOMPONENT GŁÓWNY");
+  //console.log(exchangeValues);
 
   return (
     <AppContainer>

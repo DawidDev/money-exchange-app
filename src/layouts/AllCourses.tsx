@@ -83,7 +83,7 @@ type handleSearchType = (e: any) => void;
 type warningType = 'noSearching' | 'warningYes' | 'isOkSearching';
 
 const AllCourses = () => {  
-  console.log('Komponent: ALL COURSES')
+  //console.log('Komponent: ALL COURSES')
   // Pobranie z kontekstu danych o walutach
   const MoneyGlobalTab = useContext(AppContext)
   console.log(MoneyGlobalTab)

@@ -4,10 +4,11 @@ import { Link, useParams } from "react-router-dom";
 // Import komponentów
 import CurrencyBox from "../components/CurrencyBox";
 import RenderTitle from "../components/RenderTitle";
+import RenderChart from "../components/RenderChart";
 
 const SelectedCurrency = () => {
   const { name } = useParams();
-  console.log("Wybrana waluta: " + name);
+  //console.log("Wybrana waluta: " + name);
 
   const [data, setData] = useState<any>([]);
   const [info, setInfo] = useState<any>({});
@@ -29,8 +30,8 @@ const SelectedCurrency = () => {
         }
       });
   });
-  console.log(data);
-  console.log(info);
+  //console.log(data);
+  //console.log(info);
 
   let nameBox: string = info.fullName ? info.fullName : "brak";
   let shortNameBox: string = info.codeCurrency ? info.codeCurrency : "brak";
@@ -47,6 +48,8 @@ const SelectedCurrency = () => {
         buy={lastValueBox}
       />
       <Link to="/all-courses">Powrót do listy</Link>
+      <br/>
+      {data ? <RenderChart dataTab={data} /> : null}
     </>
   );
 };

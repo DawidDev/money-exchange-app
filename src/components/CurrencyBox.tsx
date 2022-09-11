@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const CurrencyContainer = styled.div`
   border-bottom: 1px solid #F4F2EE;
   width: 90%;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
@@ -39,6 +39,12 @@ const CurrencyContainer = styled.div`
     cursor: pointer;
   }
 
+  .link {
+    color: #29B35E;
+    text-decoration: none;
+    font-size: 0.875rem;
+  }
+
 `;
 
 type CurrencyBoxProps = {
@@ -55,7 +61,7 @@ const CurrencyBox = (props: CurrencyBoxProps) => {
     <p id="name">{props.name}</p>
     <p id="buy">{props.buy}</p>
     <button>Obserwuj</button>
-    <Link to={`/all-courses/${props.shortName}`}>KLIKNIJ</Link>
+    <Link className="link" to={`/all-courses/${props.shortName}`}>Szczegóły</Link>
   </CurrencyContainer>)
 };
 
