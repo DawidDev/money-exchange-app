@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const CurrencyContainer = styled.div`
   border-bottom: 1px solid #F4F2EE;
@@ -44,7 +45,6 @@ type CurrencyBoxProps = {
   id: number;
   name: string;
   shortName: string;
-  sell: number;
   buy: number;
 };
 
@@ -53,9 +53,9 @@ const CurrencyBox = (props: CurrencyBoxProps) => {
   <CurrencyContainer>
     <p id="short-name">{props.shortName}</p>
     <p id="name">{props.name}</p>
-    <p id="sell">{props.sell}</p>
     <p id="buy">{props.buy}</p>
     <button>Obserwuj</button>
+    <Link to={`/all-courses/${props.shortName}`}>KLIKNIJ</Link>
   </CurrencyContainer>)
 };
 

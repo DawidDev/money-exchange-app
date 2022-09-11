@@ -3,7 +3,8 @@ import React from 'react'
 const WatchedCourses = () => {
     return(
         <>
-        Obserwowane kursy</>
+        Obserwowane kursy
+        </>
     )
 }
 

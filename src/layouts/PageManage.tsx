@@ -5,6 +5,7 @@ import HomePage from "./HomePage";
 import AllCourses from "./AllCourses";
 import WatchedCourses from "./WatchedCourses";
 import Faq from "./Faq";
+import SelectedCurrency from "./SelectedCurrency";
 
 const PageManage = () => {
   return (
@@ -14,6 +15,7 @@ const PageManage = () => {
         <Route path="/all-courses" element={<AllCourses />}></Route>
         <Route path="/watched-courses" element={<WatchedCourses />}></Route>
         <Route path="/faq" element={<Faq />}></Route>
+        <Route path="/all-courses/:name" element={<SelectedCurrency />}></Route>
       </Routes>
     </>
   );

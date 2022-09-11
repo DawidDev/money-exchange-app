@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 
 // Import komponentów
 import CurrencyBox from "../components/CurrencyBox";
 import RenderTitle from "../components/RenderTitle";
+
+// Import danych z kontekstu
+import { AppContext, MoneyGlobalTab } from "../context/AppContext";
 
 const MainContainer = styled.div`
   margin-top: 2rem;
@@ -72,37 +75,6 @@ const ErrorSearchingInfo = styled.div`
   text-align: center;
 `;
 
-const exampleTabMoney = [
-  {
-    id: 1,
-    name: "Frank Szwajcarski",
-    shortName: "CHF",
-    sell: 4.69,
-    buy: 4.89,
-  },
-  {
-    id: 2,
-    name: "Euro",
-    shortName: "TO",
-    sell: 4.69,
-    buy: 4.89,
-  },
-  {
-    id: 3,
-    name: "Dolar",
-    shortName: "TO",
-    sell: 4.69,
-    buy: 4.89,
-  },
-  {
-    id: 4,
-    name: "Rub5le",
-    shortName: "CHF",
-    sell: 4.69,
-    buy: 4.89,
-  },
-];
-
 // Typ dla propsów przesyłanych do stylowanych komponentów
 type Props = {
   warning: string;
@@ -110,19 +82,25 @@ type Props = {
 type handleSearchType = (e: any) => void;
 type warningType = 'noSearching' | 'warningYes' | 'isOkSearching';
 
-const AllCourses = () => {
+const AllCourses = () => {  
+  console.log('Komponent: ALL COURSES')
+  // Pobranie z kontekstu danych o walutach
+  const MoneyGlobalTab = useContext(AppContext)
+  console.log(MoneyGlobalTab)
+
+  // Wartość wyszukiwana 
   const [search, setSearch] = useState<string>("");
   const handleSearch: handleSearchType = (e: any) => {
     setSearch(e.target.value);
   };
 
   // Kopia tablicy pobranej z API
-  const localTab = [...exampleTabMoney];
+  const localTab = MoneyGlobalTab;
   // Tablica przefiltrowana na podstawie poszukiwanej nazwy
   const searchingTab = localTab.filter(
-    (item) =>
-      item.name.toLowerCase().includes(search.toLowerCase()) ||
-      item.shortName.toLowerCase().includes(search.toLowerCase())
+    (item:any) =>
+      item.currency.toLowerCase().includes(search.toLowerCase()) ||
+      item.currency.toLowerCase().includes(search.toLowerCase())
   );
 
   // Tablica ostateczna. Jeśli nie ma nic w wyszukiwaniu oddaje oryginalną tablice.
@@ -146,14 +124,13 @@ const AllCourses = () => {
   searchingHandle();
 
   // Montowanie komponentów na podstawie tablicy ostatecznej
-  const displayCurrencyBox = readyToDisplayTab.map((item) => (
+  const displayCurrencyBox = readyToDisplayTab.map((item:any) => (
     <CurrencyBox
       key={item.id}
       id={item.id}
-      name={item.name}
-      shortName={item.shortName}
-      sell={item.sell}
-      buy={item.buy}
+      name={item.currency}
+      shortName={item.code}
+      buy={item.mid}
     />
   ));
 
