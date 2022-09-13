@@ -1,11 +1,8 @@
-import React from 'react'
+import React from "react";
 
 const WatchedCourses = () => {
-    return(
-        <>
-        Obserwowane kursy
-        </>
-    )
-}
 
-export default WatchedCourses
+  return <>Obserwowane kursy</>;
+};
+
+export default WatchedCourses;

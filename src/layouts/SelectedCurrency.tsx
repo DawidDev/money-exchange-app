@@ -31,7 +31,7 @@ const SelectedCurrency = () => {
       });
   });
   //console.log(data);
-  //console.log(info);
+  console.log(info);
 
   let nameBox: string = info.fullName ? info.fullName : "brak";
   let shortNameBox: string = info.codeCurrency ? info.codeCurrency : "brak";
@@ -41,12 +41,12 @@ const SelectedCurrency = () => {
   return (
     <>
       <RenderTitle textDark={`Kurs (${shortNameBox})`} textGreen={nameBox} />
-      <CurrencyBox
+      {info.codeCurrency ? <CurrencyBox
         id={1}
         name={nameBox}
         shortName={shortNameBox}
         buy={lastValueBox}
-      />
+      /> : null}
       <Link to="/all-courses">Powrót do listy</Link>
       <br/>
       {data ? <RenderChart dataTab={data} /> : null}

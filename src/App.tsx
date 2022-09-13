@@ -26,6 +26,12 @@ function App() {
   const [exchangeValues, setExchangeValues] = useState<any>([]);
   const url = "http://api.nbp.pl/api/exchangerates/tables/a/?format=json";
   useEffect(() => {
+
+    // Tworzenie miejsca w localStorage jeśli nie ma danych dla aplikacji zapisanych wcześniej
+    if (localStorage.getItem("watchedList") === null) {
+      localStorage.setItem("watchedList", '');
+  }
+
     if (exchangeValues.length === 0) {
       fetch(url)
         .then((response) => {
