@@ -35,7 +35,7 @@ const WatchedCourses = () => {
     setWatchedData(EndArray);
   }, [MoneyGlobalTab, refreshList]);
 
-  console.log(watchedData);
+  //console.log(watchedData);
 
   if (watchedData[0]) {
     displayData = watchedData.map((item: any) => {

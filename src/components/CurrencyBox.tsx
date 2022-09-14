@@ -61,6 +61,9 @@ type CurrencyBoxProps = {
 };
 
 const CurrencyBox = (props: CurrencyBoxProps) => {
+  if (localStorage.getItem("watchedList") === null) {
+    localStorage.setItem("watchedList", '');
+  }
   let localStorageList = localStorage.watchedList.split("-");
 
   // Stan pobierający informacje z lokalnej pamięci czy waluta jest dodana do ulubionych
@@ -82,7 +85,6 @@ const CurrencyBox = (props: CurrencyBoxProps) => {
     }
   };
 
-  //console.log(typeBtn);
 
   // Obsługa usuwania z localStorage wybranej waluty
   const removeFromWatched = () => {
@@ -115,7 +117,7 @@ const CurrencyBox = (props: CurrencyBoxProps) => {
 
   // Decyzja: która funckja obsługiwana będzie z przycisku
   const fnkToBtnHandle = typeBtn === -1 ? addToWatchedList : removeFromWatched;
-  console.log(localStorageList);
+  //console.log(localStorageList);
 
   const displayDetails = props.showDetails === true ?  (<Link className="link" to={`/all-courses/${props.shortName}`}>
   Szczegóły
