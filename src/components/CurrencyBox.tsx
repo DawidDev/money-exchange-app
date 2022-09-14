@@ -28,15 +28,19 @@ const CurrencyContainer = styled.div`
 
   button {
     border: none;
-    background-color: transparent;
+    background-color: #29b35e;
     font-weight: 500;
-    color: #91c8a6;
+    color: #fff;
     font-family: "Poppins", sans-serif;
     transition: 0.25s;
+    width: 3.5rem;
+    font-size: 0.75rem;
   }
 
   button:hover {
     color: #29b35e;
+    background-color: #fff;
+    border: 1px solid #29b35e;
     cursor: pointer;
   }
 
@@ -55,30 +59,23 @@ type CurrencyBoxProps = {
 };
 
 const CurrencyBox = (props: CurrencyBoxProps) => {
-  const localStorageList = localStorage.watchedList.split("-");
+  let localStorageList = localStorage.watchedList.split("-");
 
   // Stan pobierający informacje z lokalnej pamięci czy waluta jest dodana do ulubionych
   const [typeBtn, setTypeBtn] = useState(
     localStorageList.indexOf(props.shortName)
   );
-  
-  console.log(typeBtn);
-  // Stan zawierający lokalną tablice pobraną z pamięci przeglądarki
-  const [localTab, setLocalTab] = useState<Array<string>>(localStorageList);
-
   const addToWatchedList: any = () => {
+    // Ponowne przypisanie do zmiennej lokalnej komponentu wartości listy z pamięci podręcznej dla aktualizacji i uniknięcia błędów
+    localStorageList = localStorage.watchedList.split("-");
     // Obsługa dodawania do pamięci przeglądarki krótkich nazw walut, obserwowanych
     // Jeśli nie ma na liście tej waluty to dodaj do localStorage
     if (localStorageList.indexOf(props.shortName) === -1) {
-      let array = [];
       if (localStorage.watchedList.length > 0) {
         localStorage.watchedList += `-${props.shortName}`;
       } else {
         localStorage.watchedList += `${props.shortName}`;
       }
-      //array = localStorage.watchedList.split("-");
-      //console.log(array)
-      //setLocalTab(array);
       setTypeBtn(1);
     }
   };
@@ -87,28 +84,33 @@ const CurrencyBox = (props: CurrencyBoxProps) => {
 
   // Obsługa usuwania z localStorage wybranej waluty
   const removeFromWatched = () => {
+    // Ponowne przypisanie do zmiennej lokalnej komponentu wartości listy z pamięci podręcznej dla aktualizacji i uniknięcia błędów
+    localStorageList = localStorage.watchedList.split("-");
     console.log("Usuwam");
     let array = localStorageList.filter((item: any) => item !== props.shortName)
     //console.log(array)
     let temporaryLocalStorage = "";
 
-    array.forEach((item: any) => {
-      if (array.length > 1) {
-        temporaryLocalStorage += `-${item}`;
-      } else if (array.length === 1) {
-        temporaryLocalStorage = `${item}`;
-      } else {
-        temporaryLocalStorage = "";
-      }
-    });
 
-    console.log(localStorageList);
+    for (let i = 0; i < array.length; i++) {
+      if(array.length > 1) {
+        if(array.length-1 === i) {
+          temporaryLocalStorage += `${array[i]}`
+        }
+        else {
+          temporaryLocalStorage += `${array[i]}-`;
+        }
+      }
+      else if (array.length === 1) temporaryLocalStorage = `${array[i]}`
+      else if(array.length === 0) temporaryLocalStorage = ''
+      
+    }
+
     localStorage.watchedList = temporaryLocalStorage;
-    //setLocalTab(array);
     setTypeBtn(-1);
   };
 
-  //console.log(typeBtn)
+  // Decyzja: która funckja obsługiwana będzie z przycisku
   const fnkToBtnHandle = typeBtn === -1 ? addToWatchedList : removeFromWatched;
   console.log(localStorageList);
 
