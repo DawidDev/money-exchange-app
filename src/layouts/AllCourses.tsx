@@ -131,6 +131,7 @@ const AllCourses = () => {
       name={item.currency}
       shortName={item.code}
       buy={item.mid}
+      showDetails={true}
     />
   ));
 

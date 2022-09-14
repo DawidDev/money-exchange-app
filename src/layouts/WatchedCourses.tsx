@@ -48,6 +48,7 @@ const WatchedCourses = () => {
             shortName={item.code}
             buy={item.mid}
             refreshState={handleRefreshList}
+            showDetails={true}
           />
         );
     });

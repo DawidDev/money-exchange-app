@@ -57,6 +57,7 @@ type CurrencyBoxProps = {
   shortName: string;
   buy: number;
   refreshState? : ()=> void;
+  showDetails?: boolean,
 };
 
 const CurrencyBox = (props: CurrencyBoxProps) => {
@@ -116,6 +117,10 @@ const CurrencyBox = (props: CurrencyBoxProps) => {
   const fnkToBtnHandle = typeBtn === -1 ? addToWatchedList : removeFromWatched;
   console.log(localStorageList);
 
+  const displayDetails = props.showDetails === true ?  (<Link className="link" to={`/all-courses/${props.shortName}`}>
+  Szczegóły
+</Link>) : null
+
   return (
     <CurrencyContainer>
       <p id="short-name">{props.shortName}</p>
@@ -124,9 +129,7 @@ const CurrencyBox = (props: CurrencyBoxProps) => {
       <button onClick={fnkToBtnHandle}>
         {typeBtn === -1 && !props.refreshState? "Dodaj" : "Usuń"}
       </button>
-      <Link className="link" to={`/all-courses/${props.shortName}`}>
-        Szczegóły
-      </Link>
+      {displayDetails}
     </CurrencyContainer>
   );
 };
