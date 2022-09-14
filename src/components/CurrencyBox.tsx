@@ -56,6 +56,7 @@ type CurrencyBoxProps = {
   name: string;
   shortName: string;
   buy: number;
+  refreshState? : ()=> void;
 };
 
 const CurrencyBox = (props: CurrencyBoxProps) => {
@@ -108,6 +109,7 @@ const CurrencyBox = (props: CurrencyBoxProps) => {
 
     localStorage.watchedList = temporaryLocalStorage;
     setTypeBtn(-1);
+    if(props.refreshState) props.refreshState()
   };
 
   // Decyzja: która funckja obsługiwana będzie z przycisku
@@ -120,7 +122,7 @@ const CurrencyBox = (props: CurrencyBoxProps) => {
       <p id="name">{props.name}</p>
       <p id="buy">{props.buy}</p>
       <button onClick={fnkToBtnHandle}>
-        {typeBtn === -1 ? "Dodaj" : "Usuń"}
+        {typeBtn === -1 && !props.refreshState? "Dodaj" : "Usuń"}
       </button>
       <Link className="link" to={`/all-courses/${props.shortName}`}>
         Szczegóły

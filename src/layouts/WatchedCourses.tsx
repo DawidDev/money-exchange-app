@@ -8,6 +8,9 @@ const WatchedCourses = () => {
   const [watchedData, setWatchedData] = useState([]);
   const MoneyGlobalTab = useContext(AppContext);
 
+  const [refreshList, setRefreshList] = useState(false);
+  const handleRefreshList = () => setRefreshList(prevValue => !prevValue);
+
   let displayData: any = [];
 
   // Po zamontowaniu (.. pobraniu z kontekstu danych) aktualizuje lokalną tablicę (state)
@@ -30,7 +33,7 @@ const WatchedCourses = () => {
       return uniqueValues[0];
     });
     setWatchedData(EndArray);
-  }, [MoneyGlobalTab]);
+  }, [MoneyGlobalTab, refreshList]);
 
   console.log(watchedData);
 
@@ -44,6 +47,7 @@ const WatchedCourses = () => {
             name={item.currency}
             shortName={item.code}
             buy={item.mid}
+            refreshState={handleRefreshList}
           />
         );
     });
