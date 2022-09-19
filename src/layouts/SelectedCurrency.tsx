@@ -8,14 +8,38 @@ import RenderTitle from "../components/RenderTitle";
 import RenderChart from "../components/RenderChart";
 
 const ChartBox = styled.div`
-width: 50%;
-height: 300px;
-margin-top: 3rem;
-`
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 3rem;
+  padding-bottom: 4rem;
+`;
+
+const MainContainer = styled.div`
+  .link-box {
+    width: 100%;
+    overflow: hidden;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .link-back {
+      background-color: transparent;
+      height: 2rem;
+      padding: 0.25rem 0.75rem;
+      text-decoration: none;
+      color: #4e5255;
+      transition: 0.25s;
+
+      :hover {
+        color: #29B35E;
+      }
+    }
+  }
+`;
 
 const SelectedCurrency = () => {
   const { name } = useParams();
-  //console.log("Wybrana waluta: " + name);
 
   const [data, setData] = useState<any>([]);
   const [info, setInfo] = useState<any>({});
@@ -37,7 +61,6 @@ const SelectedCurrency = () => {
         }
       });
   });
-  //console.log(data);
   console.log(info);
 
   let nameBox: string = info.fullName ? info.fullName : "brak";
@@ -46,21 +69,23 @@ const SelectedCurrency = () => {
   let lastValueDate: string = info.lastValueDate ? info.lastValueDate : "brak";
 
   return (
-    <>
+    <MainContainer>
       <RenderTitle textDark={`Kurs (${shortNameBox})`} textGreen={nameBox} />
-      {info.codeCurrency ? <CurrencyBox
-        id={1}
-        name={nameBox}
-        shortName={shortNameBox}
-        buy={lastValueBox}
-      /> : null}
-      <Link to="/all-courses">Powrót do listy</Link>
-      <br/>
-      <ChartBox>
-      {data ? <RenderChart dataTab={data} /> : null}
-      </ChartBox>
-      
-    </>
+      {info.codeCurrency ? (
+        <CurrencyBox
+          id={1}
+          name={nameBox}
+          shortName={shortNameBox}
+          buy={lastValueBox}
+        />
+      ) : null}
+      <ChartBox>{data ? <RenderChart dataTab={data} /> : null}</ChartBox>
+      <div className="link-box">
+        <Link to="/all-courses" className="link-back">
+          Powrót do listy
+        </Link>
+      </div>
+    </MainContainer>
   );
 };
 

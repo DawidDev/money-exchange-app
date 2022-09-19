@@ -27,10 +27,13 @@ const MainContainer = styled.div`
         margin: 1.25rem 3rem;
         display: flex;
         align-items: center;
-        font-size: 1rem;
+        font-size: 0.85rem;
 
         span {
             color: #29B35E;
+            margin-left: 0.5rem;
+            font-weight: 600;
+            font-size: 1rem;
         }
     }
   }

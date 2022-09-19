@@ -48,7 +48,7 @@ type renderChartType = {
 };
 
 const RenderChart = (props: renderChartType) => {
-  const [numberLast, setNumberLast] = useState(7);
+  const [numberLast, setNumberLast] = useState(30);
   const handleNumberLast: any = (value: number) => {
     console.log("Renderuje dla dni: " + value);
     setNumberLast(value);
