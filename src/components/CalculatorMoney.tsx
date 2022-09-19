@@ -90,7 +90,7 @@ const MainContainer = styled.div`
       color: #29b35e;
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     position: relative;
     width: 100% !important;
     order: 2;
@@ -112,7 +112,7 @@ const MainContainer = styled.div`
           display: flex;
           justify-content: space-between;
           align-items: center;
-          width: 40%;
+          width: 50%;
 
           .select-input {
             width: 100%;
@@ -121,7 +121,7 @@ const MainContainer = styled.div`
         }
 
         input {
-          width: 55%;
+          width: 45%;
           height: 100%;
           bottom: 0;
           position: relative;
@@ -137,7 +137,7 @@ const MainContainer = styled.div`
     }
   }
 
-  @media (max-width: 1024px) {
+  @media (min-width: 768px) and (max-width: 1024px) {
     width: 45%;
     .calculator {
       flex-direction: column;
@@ -153,7 +153,7 @@ const MainContainer = styled.div`
           display: flex;
           justify-content: space-between;
           align-items: center;
-          width: 40%;
+          width: 45%;
 
           .select-input {
             width: 100%;
@@ -162,7 +162,7 @@ const MainContainer = styled.div`
         }
 
         input {
-          width: 55%;
+          width: 45%;
           height: 100%;
           bottom: 0;
           position: relative;
