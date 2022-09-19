@@ -12,17 +12,16 @@ import {
 } from "recharts";
 
 const ChartContainer = styled.div`
-    width: 50%;
-    height: 300px;
-    margin-top: 4rem;
-
-    
+    width: 100%;
+    height: 100%;
 `
 
 const ButtonContainer = styled.div`
   width: 100%;
+  border: 1px solid red;
   display: flex;
   justify-content: center;
+
   button {
     border: none;
     padding: 0.25rem;
@@ -83,7 +82,7 @@ const RenderChart = (props: renderChartType) => {
   return (
     <>
       <ChartContainer>
-        <ResponsiveContainer width='100%' height='100%'>
+        <ResponsiveContainer width='100%' height='75%'>
           <LineChart
             width={500}
             height={300}

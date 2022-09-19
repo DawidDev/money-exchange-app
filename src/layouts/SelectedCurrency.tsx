@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import styled from "styled-components";
 
 // Import komponentów
 import CurrencyBox from "../components/CurrencyBox";
 import RenderTitle from "../components/RenderTitle";
 import RenderChart from "../components/RenderChart";
+
+const ChartBox = styled.div`
+width: 50%;
+height: 300px;
+margin-top: 3rem;
+`
 
 const SelectedCurrency = () => {
   const { name } = useParams();
@@ -49,7 +56,10 @@ const SelectedCurrency = () => {
       /> : null}
       <Link to="/all-courses">Powrót do listy</Link>
       <br/>
+      <ChartBox>
       {data ? <RenderChart dataTab={data} /> : null}
+      </ChartBox>
+      
     </>
   );
 };
