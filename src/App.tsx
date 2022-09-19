@@ -8,6 +8,7 @@ import Navigation from "./components/navigation";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import { AppContext } from "./context/AppContext";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const AppContainer = styled.div`
   margin: 0 auto;
@@ -46,14 +47,26 @@ function App() {
     }
   });
   //console.log("KOMPONENT GŁÓWNY");
-  //console.log(exchangeValues);
+  console.log(exchangeValues);
+
+  // Efekt ładowania danych. Bez pobrania danych aplikacja się nie uruchomi.
+  const content = exchangeValues.length > 0 ? <PageManage /> : <CircularProgress
+  sx={{
+    color: "#29B35E",
+    margin: "0 auto",
+    position: 'absolute',
+    left: '50%',
+    top: '50%',
+    transform: 'translateY(-50%)',
+  }}
+/>
 
   return (
     <AppContainer>
       <AppContext.Provider value={exchangeValues}>
         <Router>
           <Navigation />
-          <PageManage />
+          {content}
         </Router>
       </AppContext.Provider>
     </AppContainer>

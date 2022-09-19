@@ -136,12 +136,14 @@ const AllCourses = () => {
   ));
 
   // Decyzja: wyświetlamy listę czy komunikat o błędzie wyszukiwania
-  const endResult =
+  const displayResult =
     displayCurrencyBox.length > 0 ? (
       displayCurrencyBox
     ) : (
       <ErrorSearchingInfo>Brak. Spróbuj ponownie!</ErrorSearchingInfo>
     );
+
+  
 
   return (
     <MainContainer>
@@ -156,7 +158,7 @@ const AllCourses = () => {
           </SearchBox>
         </div>
       </div>
-      {endResult}
+      {displayResult}
     </MainContainer>
   );
 };
