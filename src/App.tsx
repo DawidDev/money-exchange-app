@@ -9,12 +9,14 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import { AppContext } from "./context/AppContext";
 import CircularProgress from "@mui/material/CircularProgress";
+import Footer from "./layouts/Footer";
 
 const AppContainer = styled.div`
   margin: 0 auto;
   //border: 1px solid red;
   font-family: "Poppins", sans-serif;
   z-index: 0;
+  min-height: 78.3vh;
 
   @media (min-width: 768px) {
     max-width: 1400px;
@@ -62,6 +64,7 @@ function App() {
 />
 
   return (
+    <>
     <AppContainer>
       <AppContext.Provider value={exchangeValues}>
         <Router>
@@ -70,6 +73,8 @@ function App() {
         </Router>
       </AppContext.Provider>
     </AppContainer>
+    <Footer/>
+    </>
   );
 }
 

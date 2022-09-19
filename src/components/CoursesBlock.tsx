@@ -8,13 +8,12 @@ import RenderChart from "./RenderChart";
 const MainContainer = styled.div`
   max-width: 28rem;
   width: 100%;
-  height: 20rem;
+  height: 22rem;
   position: relative;
 
   .box-chart {
     display: flex;
     align-items: center;
-    height: 100%;
     justify-content: center;
     flex-wrap: wrap;
 

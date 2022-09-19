@@ -13,10 +13,11 @@ import {
 
 const ChartContainer = styled.div`
     width: 100%;
-    height: 100%;
+    height: 14rem;
     display: flex;
     justify-content: center;
-    flex-direction: column;;
+    flex-direction: column;
+    position: relative;
 `
 
 const ButtonContainer = styled.div`
@@ -84,7 +85,7 @@ const RenderChart = (props: renderChartType) => {
   return (
     <>
       <ChartContainer>
-        <ResponsiveContainer width='100%' height='75%'>
+        <ResponsiveContainer width='100%' height='100%'>
           <LineChart
             width={500}
             height={300}
