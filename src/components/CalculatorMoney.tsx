@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { Select, MenuItem } from "@mui/material";
+
+import { AppContext } from "../context/AppContext";
 
 const MainContainer = styled.div`
   width: 60%;
@@ -95,7 +97,6 @@ const MainContainer = styled.div`
     transform: translateY(0%);
     top: 0;
     height: auto;
-    
 
     .calculator {
       flex-direction: column;
@@ -107,7 +108,6 @@ const MainContainer = styled.div`
         justify-content: space-between;
         align-items: center;
 
-
         .line-1 {
           display: flex;
           justify-content: space-between;
@@ -117,29 +117,27 @@ const MainContainer = styled.div`
           .select-input {
             width: 100%;
             font-size: 1.5rem;
-            
           }
         }
 
         input {
-            width: 55%;
-            height: 100%;
-            bottom: 0;
-            position: relative;
-            left: 0%;
-            transform: translateX(0%);
-            text-align: right;
-            
+          width: 55%;
+          height: 100%;
+          bottom: 0;
+          position: relative;
+          left: 0%;
+          transform: translateX(0%);
+          text-align: right;
         }
 
         p {
-            display: none
+          display: none;
         }
       }
     }
   }
 
-  @media (max-width: 1024px){
+  @media (max-width: 1024px) {
     width: 45%;
     .calculator {
       flex-direction: column;
@@ -151,7 +149,6 @@ const MainContainer = styled.div`
         justify-content: space-between;
         align-items: center;
 
-
         .line-1 {
           display: flex;
           justify-content: space-between;
@@ -161,65 +158,87 @@ const MainContainer = styled.div`
           .select-input {
             width: 100%;
             font-size: 1.5rem;
-            
           }
         }
 
         input {
-            width: 55%;
-            height: 100%;
-            bottom: 0;
-            position: relative;
-            left: 0%;
-            transform: translateX(0%);
-            text-align: right;
-            
+          width: 55%;
+          height: 100%;
+          bottom: 0;
+          position: relative;
+          left: 0%;
+          transform: translateX(0%);
+          text-align: right;
         }
 
         p {
-            display: none
+          display: none;
         }
       }
     }
   }
-
 `;
 
 const CalculatorMoney = () => {
+  // Pobieranie z kontekstu tablicy z danymi o
+  const MoneyGlobalTab = useContext(AppContext);
+  //console.log(MoneyGlobalTab)
+
+  // Tworzenie tablicy z polami do wyboru do kalkulacji
+  const arrayOptionsValues = MoneyGlobalTab.map((item: any) => ({
+    code: item.code,
+    value: item.mid,
+  }));
+
   // Aktualnie wybrana opcja (nazwa waluty)
   const [optionChoosed, setOptionChoosed] = useState("EUR");
   const handleOption = (e: any) => {
     const newValue = e.target.value;
     setOptionChoosed(newValue);
-    console.log(newValue);
+    setValueInput(0);
+    setCalculateValue(0);
   };
 
   // Aktualnie wprowadzona wartość do kalkulacji
   const [valueInput, setValueInput] = useState(0);
   const handleValueInput = (e: any) => {
-    setValueInput(e.target.value);
-    handleCalculateValue(optionChoosed, e.target.value, 0.42);
+    if (!isNaN(e.target.value)) {
+      const value = parseFloat(e.target.value);
+      handleCalculateValue(value);
+      setValueInput(value);
+    } else {
+      setValueInput(0);
+    }
   };
 
   // Aktualnie wybrana nazwa waluty do kalulacji
   const [resultOptionChoosed, setResultOptionChoosed] = useState("CHF");
   const handleResultOption = (e: any) => {
+    setValueInput(0);
+    setCalculateValue(0);
     setResultOptionChoosed(e.target.value);
   };
 
   // Aktualnie przekalkulowana wartość po konwersji waluty
   const [afterCalculateValue, setCalculateValue] = useState(0);
-  const handleCalculateValue = (
-    name: string,
-    value: number,
-    multiplier: number
-  ) => {
-    const newValue: number = value * multiplier;
+  const handleCalculateValue = (number: number) => {
+    // Przypisanie do zmiennych wartości dwóch walut wybranych do kalkulacji
+    const firstValue: any = arrayOptionsValues.filter(
+      (item: any) => item.code === optionChoosed
+    );
+    const secondValue: any = arrayOptionsValues.filter(
+      (item: any) => item.code === resultOptionChoosed
+    );
+
+    // Kalkulacja wyniku
+    let newValue = Math.round(
+      (number * firstValue[0].value) / secondValue[0].value
+    );
     setCalculateValue(newValue);
   };
 
   // Tablica zawierająca dostępne waluty do wyboru
-  const optionsTab = ["EUR", "CHF", "FRA"];
+  const optionsTab = arrayOptionsValues.map((item: any) => item.code);
 
   // Funkcja zwracająca opcje dla elementu Select
   const SelectOptions = (option: string) =>
@@ -286,13 +305,13 @@ const CalculatorMoney = () => {
             >
               {SelectOptions("result")}
             </Select>
-            
           </div>
           <input
-              type={"number"}
-              className={"input-value"}
-              value={afterCalculateValue}
-            />
+            type={"number"}
+            className={"input-value"}
+            value={afterCalculateValue}
+            disabled={true}
+          />
         </div>
       </div>
     </MainContainer>

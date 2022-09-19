@@ -14,11 +14,13 @@ import {
 const ChartContainer = styled.div`
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;;
 `
 
 const ButtonContainer = styled.div`
   width: 100%;
-  border: 1px solid red;
   display: flex;
   justify-content: center;
 
@@ -29,7 +31,7 @@ const ButtonContainer = styled.div`
     margin: 0 0.5rem;
     transition: 0.25s;
     color: #4e5255;
-    background-color: #f4f4f4;
+    background-color: transparent;
     outline: none;
 
     :hover {
@@ -53,8 +55,8 @@ const RenderChart = (props: renderChartType) => {
 
   // Domyślne dane w przypadku braku otrzymania ich z komponentu wyższego rzędu
   const data = [
-    { name: "Page A", uv: 800 },
-    { name: "Page B", uv: 480 },
+    { name: "Page A", course: 800 },
+    { name: "Page B", course: 480 },
   ];
 
   // Tablica w której znajdują się albo dane domyślne albo pobranez api
@@ -63,7 +65,7 @@ const RenderChart = (props: renderChartType) => {
     const toChartTab = props.dataTab.rates.map((item: any) => {
       return {
         name: item.effectiveDate.substring(5, 10),
-        uv: item.mid,
+        kurs: item.mid,
       };
     });
     localTab = toChartTab;
@@ -72,10 +74,10 @@ const RenderChart = (props: renderChartType) => {
 
   const Buttons = () => (
     <>
-      <button onClick={handleNumberLast.bind(this, 3)}>Ostatnie 3 dni</button>
-      <button onClick={handleNumberLast.bind(this, 7)}>Ostatnie 7 dni</button>
-      <button onClick={handleNumberLast.bind(this, 21)}>Ostatnie 21 dni</button>
-      <button onClick={handleNumberLast.bind(this, 30)}>Ostatnie 30 dni</button>
+      <button onClick={handleNumberLast.bind(this, 3)}>3 dni</button>
+      <button onClick={handleNumberLast.bind(this, 7)}>7 dni</button>
+      <button onClick={handleNumberLast.bind(this, 21)}>21 dni</button>
+      <button onClick={handleNumberLast.bind(this, 30)}>30 dni</button>
     </>
   );
 
@@ -87,9 +89,9 @@ const RenderChart = (props: renderChartType) => {
             width={500}
             height={300}
             data={localTab}
-            margin={{ top: 5, right: 5, bottom: 5, left: 0 }}
+            margin={{ top: 5, right: 5, bottom: 5, left: -30 }}
           >
-            <Line type="monotone" dataKey="uv" stroke="#29b35e" />
+            <Line type="monotone" dataKey="kurs" stroke="#29b35e" />
             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
             <XAxis dataKey="name" />
             <YAxis />

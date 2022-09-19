@@ -154,7 +154,6 @@ const CoursesBlock = () => {
       });
   }, []);
 
-  console.log(dataToChart)
   return (
     <MainContainer>
       <ButtonsBox>
