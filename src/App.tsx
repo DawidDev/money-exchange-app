@@ -17,7 +17,9 @@ const AppContainer = styled.div`
   font-family: "Poppins", sans-serif;
   z-index: 0;
   min-height: 78.3vh;
-
+  @media (max-width: 767px) {
+    padding-top: 8.5rem; // Margines wewnętrzny dla nawigacji. Patrz: komponent 'navigation', position: absolute.
+  }
   @media (min-width: 768px) {
     max-width: 1400px;
     width: 100%;

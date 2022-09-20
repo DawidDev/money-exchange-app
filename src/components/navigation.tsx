@@ -8,14 +8,16 @@ import RightNav from "./RightNav";
 // Import logo
 import logoMain from '../images/logo-main.png'
 
-const MainContainer = styled.div`
+const MainContainer = styled.div<Props>`
   z-index: 1;
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 1.5rem;
-
+  position: relative;
+  width: 100%;
+  top: 0;
 
   img {
     width: 22rem;
@@ -25,7 +27,8 @@ const MainContainer = styled.div`
 
   @media (max-width: 767px) {
     padding-left: 1.5rem;
-
+    position: ${(props) => (props.open ? "fixed" : "absolute")};
+    height: 7rem;
     img {
       width: 15rem;
     }
@@ -91,8 +94,6 @@ display: none;
   @media (max-width: 767px) {
     display: block;
     z-index: 5 !important;
-    position: ${(props) => (props.open ? "fixed" : "relative !important")};
-    right: ${(props) => (props.open ? "0" : " ")};
     margin: 1.5rem;
     height: 2.75rem;
     width: 3.5rem;
@@ -106,7 +107,7 @@ display: none;
       width: 100%;
       height: 4px;
       border-radius: 10px;
-      background-color: ${(props) => (props.open ? "#29B35E" : "#4E5255")};;
+      background-color: ${(props) => (props.open ? "#29B35E" : "#4E5255")};
       margin: 0.3rem 0;
       transition: 0.25s;
       transform: rotate(0deg);
@@ -145,7 +146,7 @@ const Navigation = () => {
     setIsOpenMenu((prevValue) => !prevValue);
 
   return (
-    <MainContainer>
+    <MainContainer open={isOpenMenu}>
       <img src={logoMain} alt='#' />
       <NavContainer open={isOpenMenu}>
         <ul>
