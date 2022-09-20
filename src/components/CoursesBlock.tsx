@@ -66,10 +66,6 @@ const ButtonsBox = styled.div`
       opacity: 0;
       transition: 0.25s;
     }
-
-    :hover {
-      cursor: pointer;
-    }
   }
 
   .active-btn {
@@ -79,6 +75,18 @@ const ButtonsBox = styled.div`
       background-color: #29b35e !important;
       opacity: 1 !important;
     }
+  }
+
+  @media (max-width: 767px) {
+    button {
+      font-size: 1.75rem;
+      margin: 1rem 0rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    button:hover {
+      cursor: pointer;
+    }    
   }
 `;
 

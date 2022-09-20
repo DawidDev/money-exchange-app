@@ -10,6 +10,7 @@ const CurrencyContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   padding: 0.45rem 0;
 
   #short-name {
@@ -33,21 +34,39 @@ const CurrencyContainer = styled.div`
     color: #fff;
     font-family: "Poppins", sans-serif;
     transition: 0.25s;
-    width: 3.5rem;
-    font-size: 0.75rem;
+    font-size: 1rem;
+    height: 1.5rem;
+    width: 1.5rem;
   }
 
+
+
+  .link {
+    color: #29b35e;
+    text-decoration: none;
+    font-size: 0.875rem;
+  }
+  @media (min-width: 768px) {
   button:hover {
     color: #29b35e;
     background-color: #fff;
     border: 1px solid #29b35e;
     cursor: pointer;
   }
+  }
+  @media (max-width: 767px) {
+    height: 5rem;
 
-  .link {
-    color: #29b35e;
-    text-decoration: none;
-    font-size: 0.875rem;
+    button {
+      width: 2.25rem;
+      height: 2.25rem;
+      background-color: #29b35e;
+      font-size: 1.5rem;
+      padding: 0;
+      font-weight: 400;
+      padding: 0;
+      text-align: center;
+    }
   }
 `;
 
@@ -129,7 +148,7 @@ const CurrencyBox = (props: CurrencyBoxProps) => {
       <p id="name">{props.name}</p>
       <p id="buy">{props.buy}</p>
       <button onClick={fnkToBtnHandle}>
-        {typeBtn === -1 && !props.refreshState? "Dodaj" : "Usuń"}
+        {typeBtn === -1 && !props.refreshState? "+": "-"}
       </button>
       {displayDetails}
     </CurrencyContainer>

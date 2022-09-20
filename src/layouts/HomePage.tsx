@@ -58,6 +58,7 @@ const MainContainer = styled.div`
 
 const HomePage = () => {
   return (
+    <div data-aos="fade-zoom-in">
     <MainContainer>
       <h1>
         Kurs wszystkich
@@ -68,6 +69,7 @@ const HomePage = () => {
       <CalculatorMoney />
       <CoursesBlock />
     </MainContainer>
+    </div>
   );
 };
 

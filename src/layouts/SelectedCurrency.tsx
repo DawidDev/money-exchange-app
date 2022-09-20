@@ -32,7 +32,7 @@ const MainContainer = styled.div`
       transition: 0.25s;
 
       :hover {
-        color: #29B35E;
+        color: #29b35e;
       }
     }
   }
@@ -69,23 +69,25 @@ const SelectedCurrency = () => {
   let lastValueDate: string = info.lastValueDate ? info.lastValueDate : "brak";
 
   return (
-    <MainContainer>
-      <RenderTitle textDark={`Kurs (${shortNameBox})`} textGreen={nameBox} />
-      {info.codeCurrency ? (
-        <CurrencyBox
-          id={1}
-          name={nameBox}
-          shortName={shortNameBox}
-          buy={lastValueBox}
-        />
-      ) : null}
-      <ChartBox>{data ? <RenderChart dataTab={data} /> : null}</ChartBox>
-      <div className="link-box">
-        <Link to="/all-courses" className="link-back">
-          Powrót do listy
-        </Link>
-      </div>
-    </MainContainer>
+    <div data-aos="fade-zoom-in">
+      <MainContainer>
+        <RenderTitle textDark={`Kurs (${shortNameBox})`} textGreen={nameBox} />
+        {info.codeCurrency ? (
+          <CurrencyBox
+            id={1}
+            name={nameBox}
+            shortName={shortNameBox}
+            buy={lastValueBox}
+          />
+        ) : null}
+        <ChartBox>{data ? <RenderChart dataTab={data} /> : null}</ChartBox>
+        <div className="link-box">
+          <Link to="/all-courses" className="link-back">
+            Powrót do listy
+          </Link>
+        </div>
+      </MainContainer>
+    </div>
   );
 };
 

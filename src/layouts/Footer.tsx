@@ -37,6 +37,25 @@ const MainContainer = styled.div`
         }
     }
   }
+
+  @media (max-width: 767px) {
+    .box {
+      flex-direction: column;
+      padding: 1rem 0;
+      
+      .col {
+        font-size: 1.15rem;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        margin-top: 0.25rem;
+
+        span {
+          font-size: 1.25rem;
+        }
+      }
+    }
+  }
 `;
 
 const Footer = () => {

@@ -33,8 +33,8 @@ const MainContainer = styled.div`
   @media (max-width: 767px) {
     .line-searching {
       justify-content: center;
-      width: 50%;
-      margin: 2rem auto;
+      width: 80%;
+      margin: 3rem auto;
 
       .line-box {
         width: 100%;
@@ -69,6 +69,14 @@ const SearchBox = styled.div<Props>`
     background-color: transparent;
     outline: none;
   }
+
+  @media (max-width: 767px) {
+    height: 4rem;
+    input {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
 `;
 
 const ErrorSearchingInfo = styled.div`
@@ -80,15 +88,15 @@ type Props = {
   warning: string;
 };
 type handleSearchType = (e: any) => void;
-type warningType = 'noSearching' | 'warningYes' | 'isOkSearching';
+type warningType = "noSearching" | "warningYes" | "isOkSearching";
 
-const AllCourses = () => {  
+const AllCourses = () => {
   //console.log('Komponent: ALL COURSES')
   // Pobranie z kontekstu danych o walutach
-  const MoneyGlobalTab = useContext(AppContext)
-  console.log(MoneyGlobalTab)
+  const MoneyGlobalTab = useContext(AppContext);
+  console.log(MoneyGlobalTab);
 
-  // Wartość wyszukiwana 
+  // Wartość wyszukiwana
   const [search, setSearch] = useState<string>("");
   const handleSearch: handleSearchType = (e: any) => {
     setSearch(e.target.value);
@@ -98,13 +106,13 @@ const AllCourses = () => {
   const localTab = MoneyGlobalTab;
   // Tablica przefiltrowana na podstawie poszukiwanej nazwy
   const searchingTab = localTab.filter(
-    (item:any) =>
+    (item: any) =>
       item.currency.toLowerCase().includes(search.toLowerCase()) ||
       item.currency.toLowerCase().includes(search.toLowerCase())
   );
 
   // Tablica ostateczna. Jeśli nie ma nic w wyszukiwaniu oddaje oryginalną tablice.
-  let warning:warningType = "noSearching";
+  let warning: warningType = "noSearching";
   // DomyślniE jeśli nic nie ma w tablicy wyszukiwań to oddaje oryginalną tablicę
   let readyToDisplayTab = searchingTab.length > 0 ? searchingTab : localTab;
 
@@ -124,7 +132,7 @@ const AllCourses = () => {
   searchingHandle();
 
   // Montowanie komponentów na podstawie tablicy ostatecznej
-  const displayCurrencyBox = readyToDisplayTab.map((item:any) => (
+  const displayCurrencyBox = readyToDisplayTab.map((item: any) => (
     <CurrencyBox
       key={item.id}
       id={item.id}
@@ -143,23 +151,23 @@ const AllCourses = () => {
       <ErrorSearchingInfo>Brak. Spróbuj ponownie!</ErrorSearchingInfo>
     );
 
-  
-
   return (
-    <MainContainer>
-        <RenderTitle textDark={'Kursy wszystkich'} textGreen={'walut'} />
-      <div className="line-searching">
-        <div className="line-box">
-          <p>
-            Wyszukaj <span>walutę</span>
-          </p>
-          <SearchBox warning={warning}>
-            <input type="text" value={search} onChange={handleSearch} />
-          </SearchBox>
+    <div data-aos="fade-zoom-in">
+      <MainContainer>
+        <RenderTitle textDark={"Kursy wszystkich"} textGreen={"walut"} />
+        <div className="line-searching">
+          <div className="line-box">
+            <p>
+              Wyszukaj <span>walutę</span>
+            </p>
+            <SearchBox warning={warning}>
+              <input type="text" value={search} onChange={handleSearch} />
+            </SearchBox>
+          </div>
         </div>
-      </div>
-      {displayResult}
-    </MainContainer>
+        {displayResult}
+      </MainContainer>
+    </div>
   );
 };
 

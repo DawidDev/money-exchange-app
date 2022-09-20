@@ -12,13 +12,13 @@ import {
 } from "recharts";
 
 const ChartContainer = styled.div`
-    width: 100%;
-    height: 14rem;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;
-`
+  width: 100%;
+  height: 14rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+`;
 
 const ButtonContainer = styled.div`
   width: 100%;
@@ -34,8 +34,24 @@ const ButtonContainer = styled.div`
     color: #4e5255;
     background-color: transparent;
     outline: none;
+  }
 
-    :hover {
+  @media (max-width: 767px) {
+    button {
+      border-right: 2px solid #29b35e;
+      width: 25%;
+      margin: 0;
+      height: 3rem;
+      font-size: 1.5rem;
+    
+      :nth-child(4){
+        border: none;
+      }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    button:hover {
       background-color: #29b35e;
       color: #fff;
       cursor: pointer;
@@ -85,12 +101,12 @@ const RenderChart = (props: renderChartType) => {
   return (
     <>
       <ChartContainer>
-        <ResponsiveContainer width='100%' height='100%'>
+        <ResponsiveContainer width="100%" height="100%">
           <LineChart
             width={500}
             height={300}
             data={localTab}
-            margin={{ top: 5, right: 5, bottom: 5, left: -30 }}
+            margin={{ top: 5, right: 15, bottom: 5, left: 0 }}
           >
             <Line type="monotone" dataKey="kurs" stroke="#29b35e" />
             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
