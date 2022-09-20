@@ -95,7 +95,39 @@ display: none;
     right: ${(props) => (props.open ? "0" : " ")};
     margin: 1.5rem;
     height: 2.75rem;
-    width: 2.75rem;
+    width: 3.5rem;
+    padding: 0;
+    position: relative;
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    .line_1, .line_2, .line_3 {
+      width: 100%;
+      height: 4px;
+      border-radius: 10px;
+      background-color: ${(props) => (props.open ? "#29B35E" : "#4E5255")};;
+      margin: 0.3rem 0;
+      transition: 0.25s;
+      transform: rotate(0deg);
+    }
+
+    .line_2 {
+      width: ${(props) => (props.open ? "0" : "100%")};
+      opacity: ${(props) => (props.open ? "0" : "1")};
+      margin: 0 auto;
+    }
+
+    .line_1 {
+      transform: ${(props) => (!props.open ? "rotate(0)" : "rotate(45deg)")};
+      top: ${(props) => (!props.open ? "68%" : "35%")};
+      position: absolute;
+    }
+    .line_3{
+      transform: ${(props) => (!props.open ? "rotate(0)" : "rotate(-45deg)")};
+      top: ${(props) => (!props.open ? "0%" : "35%")};
+      position: absolute;
+    }
   }
 `;
 
@@ -132,7 +164,9 @@ const Navigation = () => {
         </ul>
       </NavContainer>
       <Button open={isOpenMenu} onClick={handleOpenMenu}>
-        MENU
+        <div className="line_1"></div>
+        <div className="line_2"></div>
+        <div className="line_3"></div>
       </Button>
 
       <RightNav open={isOpenMenu} handleMenu={handleOpenMenu}/>
