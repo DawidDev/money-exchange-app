@@ -70,11 +70,7 @@ type Props = {
 };
 
 const RightNav = ({ open, handleMenu }: Props) => {
-  const closeMenu = () => {
-   setTimeout(() => {
-    handleMenu()
-   }, 180)
-  }
+  const closeMenu = () => handleMenu()
 
   return (
     <>

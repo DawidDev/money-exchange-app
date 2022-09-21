@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
+import CircularProgress from "@mui/material/CircularProgress";
 
 // Import komponentów
 import CurrencyBox from "../components/CurrencyBox";
@@ -68,19 +69,41 @@ const SelectedCurrency = () => {
   let lastValueBox: number = info.lastValue ? info.lastValue : "brak";
   let lastValueDate: string = info.lastValueDate ? info.lastValueDate : "brak";
 
+  const contentSelectedCurrency = (
+    <>
+      <RenderTitle textDark={`Kurs (${shortNameBox})`} textGreen={nameBox} />
+      {info.codeCurrency ? (
+        <CurrencyBox
+          id={1}
+          name={nameBox}
+          shortName={shortNameBox}
+          buy={lastValueBox}
+        />
+      ) : null}
+      <ChartBox>{data ? <RenderChart dataTab={data} /> : null}</ChartBox>
+    </>
+  );
+
+  const displayContent =
+    info.fullName && info.lastValue ? (
+      contentSelectedCurrency
+    ) : (
+      <CircularProgress
+        sx={{
+          color: "#29B35E",
+          margin: "0 auto",
+          position: "absolute",
+          left: "50%",
+          top: "50%",
+          transform: "translateY(-50%)",
+        }}
+      />
+    );
+
   return (
     <div data-aos="fade-zoom-in">
       <MainContainer>
-        <RenderTitle textDark={`Kurs (${shortNameBox})`} textGreen={nameBox} />
-        {info.codeCurrency ? (
-          <CurrencyBox
-            id={1}
-            name={nameBox}
-            shortName={shortNameBox}
-            buy={lastValueBox}
-          />
-        ) : null}
-        <ChartBox>{data ? <RenderChart dataTab={data} /> : null}</ChartBox>
+        <div data-aos="fade-zoom-in">{displayContent}</div>
         <div className="link-box">
           <Link to="/all-courses" className="link-back">
             Powrót do listy

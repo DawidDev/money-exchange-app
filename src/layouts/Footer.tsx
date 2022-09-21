@@ -66,7 +66,7 @@ const Footer = () => {
       </div>
       <div className="box">
         <div className="col">Copyright © 2022</div>
-        <div className="col">powered <span>by LuxxCreative</span></div>
+        <div className="col">designed by <span>Dawid Rożak</span></div>
       </div>
     </MainContainer>
   );
