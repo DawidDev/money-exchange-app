@@ -137,10 +137,10 @@ const CoursesBlock = () => {
   useEffect(() => {
     // URL do poszczególnych zapytań o wybraną walutę
     const urls = [
-      "http://api.nbp.pl/api/exchangerates/rates/a/eur/last/30/",
-      "http://api.nbp.pl/api/exchangerates/rates/a/chf/last/30/",
-      "http://api.nbp.pl/api/exchangerates/rates/a/usd/last/30/",
-      "http://api.nbp.pl/api/exchangerates/rates/a/bgn/last/30/",
+      "https://api.nbp.pl/api/exchangerates/rates/a/eur/last/30/",
+      "https://api.nbp.pl/api/exchangerates/rates/a/chf/last/30/",
+      "https://api.nbp.pl/api/exchangerates/rates/a/usd/last/30/",
+      "https://api.nbp.pl/api/exchangerates/rates/a/bgn/last/30/",
     ];
     const promises = urls.map((url) => fetch(url));
 

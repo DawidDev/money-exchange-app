@@ -1,18 +1,18 @@
+import { TableHead } from "@mui/material";
 import React, { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
 
 // Import komponentów
 import CurrencyBox from "../components/CurrencyBox";
 import RenderTitle from "../components/RenderTitle";
+import TableHeaders from "../components/TableHeaders";
 
 import { AppContext } from "../context/AppContext";
 
 const MainContainer = styled.div`
   height: 100%;
   .information {
-    margin: 0 auto;
-    margin-top: 50%;
-    transform: translateY(-50%);
+    margin: 4rem auto;
     text-align: center;
     width: 80%;
   }
@@ -77,16 +77,21 @@ const WatchedCourses = () => {
     </div>
   );
 
+  const DisplayContent = () => (
+    <>
+      <TableHeaders />
+      {displayData}
+    </>
+  )
+
   return (
     <div data-aos="fade-zoom-in">
       <MainContainer>
         <RenderTitle textDark="Obserwowane kursy" textGreen="walut" />
-        {displayData.length > 0 ? displayData : <InfoBox />}
+        {displayData.length > 0 ? <DisplayContent /> : <InfoBox />}
       </MainContainer>
     </div>
   );
 };
 
 export default WatchedCourses;
-
-// Poprawić sprawdzenie czy istnije tablica. Dodać typowanie

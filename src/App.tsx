@@ -29,7 +29,7 @@ const AppContainer = styled.div`
 
 function App() {
   const [exchangeValues, setExchangeValues] = useState<any>([]);
-  const url = "http://api.nbp.pl/api/exchangerates/tables/a/?format=json";
+  const url = "https://api.nbp.pl/api/exchangerates/tables/a/?format=json";
   useEffect(() => {
 
     // Tworzenie miejsca w localStorage jeśli nie ma danych dla aplikacji zapisanych wcześniej
@@ -69,7 +69,7 @@ function App() {
     <>
     <AppContainer>
       <AppContext.Provider value={exchangeValues}>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <Navigation />
           {content}
         </Router>
