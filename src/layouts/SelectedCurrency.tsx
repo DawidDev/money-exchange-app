@@ -45,7 +45,7 @@ const SelectedCurrency = () => {
   const [data, setData] = useState<any>([]);
   const [info, setInfo] = useState<any>({});
   // Pobieranie z API danych na temat ostatnich kursów
-  const url_last_courses = `http://api.nbp.pl/api/exchangerates/rates/a/${name}/last/30/`;
+  const url_last_courses = `https://api.nbp.pl/api/exchangerates/rates/a/${name}/last/30/`;
   useEffect(() => {
     fetch(url_last_courses)
       .then((res) => res.json())

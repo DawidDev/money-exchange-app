@@ -4,6 +4,7 @@ import styled from "styled-components";
 // Import komponentów
 import CurrencyBox from "../components/CurrencyBox";
 import RenderTitle from "../components/RenderTitle";
+import TableHeaders from "../components/TableHeaders";
 
 // Import danych z kontekstu
 import { AppContext, MoneyGlobalTab } from "../context/AppContext";
@@ -165,6 +166,7 @@ const AllCourses = () => {
             </SearchBox>
           </div>
         </div>
+        <TableHeaders />
         {displayResult}
       </MainContainer>
     </div>
