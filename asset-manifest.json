@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/money-exchange-app/static/css/main.e0eaff1b.css",
+    "main.js": "/money-exchange-app/static/js/main.242e6260.js",
+    "static/media/wallet.png": "/money-exchange-app/static/media/wallet.1a1a7157472421b0c7d7.png",
+    "static/media/logo-main.png": "/money-exchange-app/static/media/logo-main.13e9cb87a372cce7c904.png",
+    "index.html": "/money-exchange-app/index.html",
+    "main.e0eaff1b.css.map": "/money-exchange-app/static/css/main.e0eaff1b.css.map",
+    "main.242e6260.js.map": "/money-exchange-app/static/js/main.242e6260.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e0eaff1b.css",
+    "static/js/main.242e6260.js"
+  ]
+}
