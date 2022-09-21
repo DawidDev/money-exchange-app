@@ -39,19 +39,19 @@ const MainContainer = styled.div`
   }
 
   @media (max-width: 767px) {
+    margin-top: 5rem;
     .box {
       flex-direction: column;
-      padding: 1rem 0;
+      padding: 0.75rem 0;
       
       .col {
-        font-size: 1.15rem;
+        font-size: 0.75rem;
         display: flex;
         justify-content: center;
         margin: 0;
-        margin-top: 0.25rem;
 
         span {
-          font-size: 1.25rem;
+          font-size: 0.85rem;
         }
       }
     }

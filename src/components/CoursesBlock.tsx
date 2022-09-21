@@ -79,7 +79,7 @@ const ButtonsBox = styled.div`
 
   @media (max-width: 767px) {
     button {
-      font-size: 1.75rem;
+      font-size: 1.25rem;
       margin: 1rem 0rem;
     }
   }

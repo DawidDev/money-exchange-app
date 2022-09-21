@@ -20,6 +20,7 @@ const CurrencyContainer = styled.div`
 
   #name {
     width: 30%;
+    overflow-wrap: break-word;
   }
 
   #sell,
@@ -56,16 +57,21 @@ const CurrencyContainer = styled.div`
   }
   @media (max-width: 767px) {
     height: 5rem;
+    font-size: 0.75rem;
 
     button {
-      width: 2.25rem;
-      height: 2.25rem;
+      width: 1.75rem;
+      height: 1.75rem;
       background-color: #29b35e;
-      font-size: 1.5rem;
+      font-size: 1rem;
       padding: 0;
       font-weight: 400;
       padding: 0;
       text-align: center;
+    }
+
+    .link {
+      font-size: 0.75rem;
     }
   }
 `;
@@ -146,7 +152,7 @@ const CurrencyBox = (props: CurrencyBoxProps) => {
     <CurrencyContainer>
       <p id="short-name">{props.shortName}</p>
       <p id="name">{props.name}</p>
-      <p id="buy">{props.buy}</p>
+      <p id="buy">{(props.buy).toFixed(4)}</p>
       <button onClick={fnkToBtnHandle}>
         {typeBtn === -1 && !props.refreshState? "+": "-"}
       </button>

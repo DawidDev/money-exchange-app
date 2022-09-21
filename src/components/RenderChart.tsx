@@ -38,11 +38,13 @@ const ButtonContainer = styled.div`
 
   @media (max-width: 767px) {
     button {
-      border-right: 2px solid #29b35e;
+      border-right: 1px solid #29b35e;
       width: 25%;
       margin: 0;
-      height: 3rem;
-      font-size: 1.5rem;
+      height: 2rem;
+      font-size: 1.25rem;
+      margin-top: 0.5rem;
+      opacity: 0.7;
     
       :nth-child(4){
         border: none;
@@ -106,7 +108,7 @@ const RenderChart = (props: renderChartType) => {
             width={500}
             height={300}
             data={localTab}
-            margin={{ top: 5, right: 15, bottom: 5, left: 0 }}
+            margin={{ top: 5, right: 35, bottom: 5, left: -20 }}
           >
             <Line type="monotone" dataKey="kurs" stroke="#29b35e" />
             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />

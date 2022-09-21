@@ -13,7 +13,7 @@ const TitleContainer = styled.div`
     }
 
     @media (max-width: 767px) {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 `
 

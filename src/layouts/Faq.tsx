@@ -23,6 +23,10 @@ const BoxInfo = styled.div`
     font-weight: 600;
     margin-bottom: 0.25rem;
   }
+
+  @media (max-width: 767px) {
+        font-size: 0.85rem;
+    }
 `;
 
 const Faq = () => {

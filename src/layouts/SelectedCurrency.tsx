@@ -13,6 +13,10 @@ const ChartBox = styled.div`
   margin: 0 auto;
   margin-top: 3rem;
   padding-bottom: 4rem;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 const MainContainer = styled.div`

@@ -13,10 +13,11 @@ import Footer from "./layouts/Footer";
 
 const AppContainer = styled.div`
   margin: 0 auto;
-  //border: 1px solid red;
   font-family: "Poppins", sans-serif;
   z-index: 0;
   min-height: 78.3vh;
+  overflow: hidden;
+  
   @media (max-width: 767px) {
     padding-top: 8.5rem; // Margines wewnętrzny dla nawigacji. Patrz: komponent 'navigation', position: absolute.
   }

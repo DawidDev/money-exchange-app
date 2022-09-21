@@ -35,6 +35,7 @@ const HeadersContainer = styled.div`
   @media (max-width: 767px) {
     height: 2rem;
     padding-bottom: 2.5rem;
+    font-size: 0.75rem;
   }
 `;
 
@@ -43,7 +44,7 @@ const TableHeaders = () => {
     <HeadersContainer>
       <p id="short-name">Kod</p>
       <p id="name">Nazwa</p>
-      <p id="buy">Cena zakupu</p>
+      <p id="buy">Cena zakupu (zł)</p>
       <p id="btn">Obserwuj</p>
       <p id="details">Sprawdź</p>
     </HeadersContainer>

@@ -20,6 +20,7 @@ const RightNavContainer = styled.div<Props>`
     padding-top: 12rem;
     padding-left: 3rem;
     padding-right: 3rem;
+    overflow: auto;
 
     ul {
       list-style-type: none;
@@ -32,7 +33,7 @@ const RightNavContainer = styled.div<Props>`
       flex-wrap: wrap;
       font-family: "Poppins", sans-serif;
       font-weight: 500;
-      font-size: 2.25rem;
+      font-size: 1.75rem;
 
       li {
         width: 100%;
@@ -54,7 +55,7 @@ const RightNavContainer = styled.div<Props>`
 
 const TitleMenuRWD = styled.div`
   width: 100%;
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   height: 5rem;
 
   h2 {

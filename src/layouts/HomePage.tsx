@@ -41,16 +41,14 @@ const MainContainer = styled.div`
   }
 
   @media (max-width: 768px) {
-
     padding: 0 1rem;
-
     .box-img {
-      opacity: 0.2;
+      opacity: 0.1;
       width: 60%;
     }
 
     h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
         margin: 2rem 0;
     }
   }

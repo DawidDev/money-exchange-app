@@ -88,6 +88,7 @@ const WatchedCourses = () => {
     <div data-aos="fade-zoom-in">
       <MainContainer>
         <RenderTitle textDark="Obserwowane kursy" textGreen="walut" />
+        <br/>
         {displayData.length > 0 ? <DisplayContent /> : <InfoBox />}
       </MainContainer>
     </div>

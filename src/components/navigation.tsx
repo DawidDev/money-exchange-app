@@ -30,7 +30,7 @@ const MainContainer = styled.div<Props>`
     position: ${(props) => (props.open ? "fixed" : "absolute")};
     height: 7rem;
     img {
-      width: 15rem;
+      width: 13rem !important;
     }
   }
 
@@ -95,8 +95,8 @@ display: none;
     display: block;
     z-index: 5 !important;
     margin: 1.5rem;
-    height: 2.75rem;
-    width: 3.5rem;
+    height: 1.75rem;
+    width: 2.25rem;
     padding: 0;
     position: relative;
     background-color: transparent;
@@ -105,10 +105,10 @@ display: none;
 
     .line_1, .line_2, .line_3 {
       width: 100%;
-      height: 4px;
+      height: 2px;
       border-radius: 10px;
       background-color: ${(props) => (props.open ? "#29B35E" : "#4E5255")};
-      margin: 0.3rem 0;
+      margin: 0.0rem 0;
       transition: 0.25s;
       transform: rotate(0deg);
     }
@@ -117,6 +117,7 @@ display: none;
       width: ${(props) => (props.open ? "0" : "100%")};
       opacity: ${(props) => (props.open ? "0" : "1")};
       margin: 0 auto;
+      margin-bottom: 0.5rem;
     }
 
     .line_1 {
@@ -141,7 +142,7 @@ type FunctionHandleOpenMenu = () => void;
 
 const Navigation = () => {
   // Zmienna decydująca o otwartym menu
-  const [isOpenMenu, setIsOpenMenu] = useState(true);
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
   const handleOpenMenu: FunctionHandleOpenMenu = () =>
     setIsOpenMenu((prevValue) => !prevValue);
 
