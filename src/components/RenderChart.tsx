@@ -108,7 +108,7 @@ const RenderChart = (props: renderChartType) => {
             width={500}
             height={300}
             data={localTab}
-            margin={{ top: 5, right: 35, bottom: 5, left: -20 }}
+            margin={{ top: 5, right: 35, bottom: 5, left: -15 }}
           >
             <Line type="monotone" dataKey="kurs" stroke="#29b35e" />
             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
